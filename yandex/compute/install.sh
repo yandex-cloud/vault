@@ -1,18 +1,18 @@
 #!/bin/bash
 set -eux
 
-BASE_VAULT_VERSION=1.8.2
+BASE_VAULT_VERSION=1.9.4
 
 # Install Go
-wget https://golang.org/dl/go1.16.8.linux-amd64.tar.gz # https://golang.org/doc/install
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.8.linux-amd64.tar.gz # https://golang.org/doc/install
+wget https://golang.org/dl/go1.17.8.linux-amd64.tar.gz # https://go.dev/doc/install
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.8.linux-amd64.tar.gz # https://go.dev/doc/install
 export GOPATH=~/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # Install Node.js
-wget https://nodejs.org/dist/latest-v14.x/node-v14.17.6-linux-x64.tar.xz
-tar -C ~ -oxf node-v14.17.6-linux-x64.tar.xz
-export PATH=$PATH:~/node-v14.17.6-linux-x64/bin
+wget https://nodejs.org/dist/v14.19.0/node-v14.19.0-linux-x64.tar.xz
+tar -C ~ -oxf node-v14.19.0-linux-x64.tar.xz
+export PATH=$PATH:~/node-v14.19.0-linux-x64/bin
 
 # Install the required packages
 apt update -y
