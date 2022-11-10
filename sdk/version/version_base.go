@@ -13,5 +13,5 @@ var (
 
 	Version           = "1.11.5"
 	VersionPrerelease = ""
-	VersionMetadata   = ""
+	VersionMetadata   = "yckms"
 )
