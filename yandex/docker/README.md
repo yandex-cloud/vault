@@ -1,4 +1,4 @@
 To build docker image run:
 ```
-docker build -t vault:1.9.4_yckms .
+docker build -t vault:1.11.5_yckms .
 ```
