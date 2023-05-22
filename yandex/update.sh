@@ -34,7 +34,7 @@ git fetch upstream --tags
 echo "Updating yckms"
 git checkout yckms
 git rebase origin main
-git push origin yckms
+#git push origin yckms
 
 if git checkout $YCKMS_VERSION; then
   echo "Branch '$YCKMS_VERSION' already exists"
@@ -80,7 +80,8 @@ if [[ "$HAS_YCKMS_PATCH" != true ]]; then
   go mod vendor
   git add vendor
 
-  git commit -m $PATCH_LAST_COMMIT_MSG
+  echo "Committing"
+  git commit -m "$PATCH_LAST_COMMIT_MSG"
 else
   echo "Patch is already applied"
 fi
