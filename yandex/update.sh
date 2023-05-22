@@ -34,7 +34,7 @@ git fetch upstream --tags
 echo "Updating yckms"
 git checkout yckms
 git rebase origin main
-#git push origin yckms
+git push origin yckms
 
 if git checkout $YCKMS_VERSION; then
   echo "Branch '$YCKMS_VERSION' already exists"
@@ -44,8 +44,14 @@ else
 fi
 
 PATCH_LAST_COMMIT_MSG="YCKMS patch"
-LAST_COMMIT_MSG=$(git log -n 1 --format=%B)
-if [[ $LAST_COMMIT_MSG != $PATCH_LAST_COMMIT_MSG ]]; then
+while read -r line < <(git log $BASE_VERSION..$YCKMS_VERSION --oneline --reverse --pretty=format:"%B"); do
+  if [[ $line == "$PATCH_LAST_COMMIT_MSG" ]]; then
+    HAS_YCKMS_PATCH=true
+    break
+  fi
+done
+
+if [[ "$HAS_YCKMS_PATCH" != true ]]; then
   echo "Applying patch from yckms branch"
   git cherry-pick --no-commit $(git log main..yckms -1000 --oneline --reverse --pretty=format:"%h" | paste -sd' ' -)
   # cherry-pick is more stable then merge-base
