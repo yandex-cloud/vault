@@ -9,7 +9,7 @@ START_DIR=$(pwd)
 trap 'cd $START_DIR' EXIT
 
 SCRIPT_PATH=$(dirname "${BASH_SOURCE[0]}")
-cd "$SCRIPT_PATH"
+cd "${WORK_DIR:-$SCRIPT_PATH}"
 
 if [[ ! -d "vault" ]]; then
   echo "Cloning vault"
@@ -27,6 +27,7 @@ git reset --hard
 echo "Synchronizing with upstream"
 git checkout main
 git pull upstream main
+#git push origin main
 
 echo "Fetching tags"
 git fetch upstream --tags
