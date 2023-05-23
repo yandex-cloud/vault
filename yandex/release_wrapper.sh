@@ -17,13 +17,13 @@ cd vault-kms-wrapper
 
 if git ls-remote --exit-code origin $BRANCH; then
   echo >&2 "Remote branch '$BRANCH' already exists!"
-  echo >&2 "Update suffix '$SUFFIX' to release new version"
+  echo >&2 "Update suffix '$WRAPPER_SUFFIX' to release new version"
   exit 1
 fi
 
 if git ls-remote --exit-code origin $TAG; then
   echo >&2 "Remote tag '$TAG' already exists!"
-  echo >&2 "Update suffix '$SUFFIX' to release new version"
+  echo >&2 "Update suffix '$WRAPPER_SUFFIX' to release new version"
   exit 1
 fi
 

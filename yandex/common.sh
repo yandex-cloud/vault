@@ -4,6 +4,8 @@ init() {
 
   SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
   cd $SCRIPT_DIR
+  SCRIPT_DIR=$(pwd)
+
   if [[ -n $WORK_DIR ]]; then
     mkdir -p $WORK_DIR
     cd $WORK_DIR

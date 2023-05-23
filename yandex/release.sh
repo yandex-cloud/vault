@@ -7,6 +7,8 @@ SCRIPT_PATH=$(dirname "${BASH_SOURCE[0]}")
 
 init
 init_vault
+get_kms_wrapper_version
+
 cd vault
 
 #git push origin main
@@ -35,8 +37,6 @@ while read -r line < <(git log $BASE_VERSION..$YCKMS_VERSION --oneline --reverse
 done
 
 if [[ "$HAS_YCKMS_PATCH" != true ]]; then
-  get_kms_wrapper_version
-
   echo "Applying patch from yckms branch"
   git cherry-pick --no-commit $(git log main..yckms -1000 --oneline --reverse --pretty=format:"%h" | paste -sd' ' -)
   # cherry-pick is more stable then merge-base

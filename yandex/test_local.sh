@@ -10,11 +10,15 @@ init_vault
 cd vault
 
 echo "Testing $YCKMS_VERSION branch"
-git checkout $YCKMS_VERSION;
+git checkout $YCKMS_VERSION
 
 echo "Building vault"
 make bootstrap
 make dev
+
+if [[ -n $AUTH_KEY_FILE ]]; then
+  cp $SCRIPT_DIR/$AUTH_KEY_FILE auth_key.json
+fi
 
 cat >vault.hcl <<EOF
 # See https://www.vaultproject.io/docs/configuration for more details about configuration options
@@ -35,7 +39,7 @@ listener "tcp" {
 seal "yandexcloudkms" {
   kms_key_id = "$KMS_KEY"
   endpoint = "${ENDPOINT:-api.cloud.yandex.net:443}"
-  service_account_key_file = "${AUTH_KEY_FILE:-auth_key.json}"
+  service_account_key_file = "auth_key.json"
 }
 EOF
 
