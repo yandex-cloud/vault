@@ -11,10 +11,8 @@ get_kms_wrapper_version
 
 cd vault
 
+echo "Pushing synchronized main"
 git push origin main
-
-echo "Fetching tags"
-git fetch upstream --tags
 
 echo "Updating yckms"
 git checkout yckms

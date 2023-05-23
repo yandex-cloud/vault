@@ -40,6 +40,9 @@ init_vault() {
   echo "Synchronizing vault with upstream"
   git checkout main
   git pull upstream main
+  echo "Fetching tags"
+  git fetch upstream --tags
+
   go_to_work_dir
 }
 
