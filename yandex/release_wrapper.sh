@@ -1,31 +1,19 @@
 #!/bin/bash
 set -e
 
-VERSION="v2.0.7"
-SUFFIX="yckms"
-BRANCH=release/${VERSION}+${SUFFIX}
-TAG=${VERSION}-${SUFFIX}
-
-START_DIR=$(pwd)
-trap 'cd $START_DIR' EXIT
-
 SCRIPT_PATH=$(dirname "${BASH_SOURCE[0]}")
-cd "${WORK_DIR:-$SCRIPT_PATH}"
+. $SCRIPT_PATH/common.sh
+. $SCRIPT_PATH/release.cfg
 
-if [[ ! -d "vault-kms-wrapper" ]]; then
-  echo "Cloning vault-kms-wrapper"
-  git clone git@github.com:yandex-cloud/vault-kms-wrapper.git
-  cd vault-kms-wrapper
-else
-  echo "Vault already cloned"
-  cd vault-kms-wrapper
-fi
+init
+init_vault
+init_vault_kms_wrapper
+get_kms_wrapper_version
 
-echo "Refreshing main"
-git reset --hard
-git checkout main
-git pull
-git fetch -p
+BRANCH=release/${KMS_WRAPPER_VERSION}+${WRAPPER_SUFFIX}
+TAG=${KMS_WRAPPER_VERSION}-${WRAPPER_SUFFIX}
+
+cd vault-kms-wrapper
 
 if git ls-remote --exit-code origin $BRANCH; then
   echo >&2 "Remote branch '$BRANCH' already exists!"
@@ -39,8 +27,8 @@ if git ls-remote --exit-code origin $TAG; then
   exit 1
 fi
 
-echo "Getting github.com/hashicorp/go-kms-wrapping/v2@$VERSION"
-go get github.com/hashicorp/go-kms-wrapping/v2@$VERSION
+echo "Getting github.com/hashicorp/go-kms-wrapping/v2@$KMS_WRAPPER_VERSION"
+go get github.com/hashicorp/go-kms-wrapping/v2@$KMS_WRAPPER_VERSION
 go mod tidy
 echo "Testing"
 go test
@@ -72,8 +60,8 @@ fi
 
 git tag $TAG -f
 
-git push origin $BRANCH
-git push origin $TAG
+#git push origin $BRANCH
+#git push origin $TAG
 
 git checkout main
-git push origin main
+#git push origin main

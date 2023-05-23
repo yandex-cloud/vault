@@ -1,17 +1,16 @@
 #!/bin/bash
 set -e
 
-# TODO remove configuration from here
-KMS_KEY=c42rf64v82v478nnn1vt
-ENDPOINT=api.il.nebius.cloud:443
-AUTH_KEY_FILE=../../auth_key_il.json
-
-START_DIR=$(pwd)
-trap 'cd $START_DIR' EXIT
-
 SCRIPT_PATH=$(dirname "${BASH_SOURCE[0]}")
-cd "${WORK_DIR:-$SCRIPT_PATH}"
+. $SCRIPT_PATH/common.sh
+. $SCRIPT_PATH/release.cfg
+
+init
+init_vault
 cd vault
+
+echo "Testing $YCKMS_VERSION branch"
+git checkout $YCKMS_VERSION;
 
 echo "Building vault"
 make bootstrap
@@ -72,4 +71,4 @@ if [[ "$VAL" != "$ACTUAL_VAL" ]]; then
   echo >&2 "Invalid key '$KEY' value! Expected $VAL, but was $ACTUAL_VAL"
   exit 1
 fi
-echo "SUCCESS"
+echo "Local test passed successfully"

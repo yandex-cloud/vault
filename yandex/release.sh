@@ -1,32 +1,14 @@
 #!/bin/bash
 set -e
 
-# TODO remove configuration from here
-BASE_VERSION="v1.13.2"
-YCKMS_VERSION="$BASE_VERSION+yckms"
-
-START_DIR=$(pwd)
-trap 'cd $START_DIR' EXIT
-
 SCRIPT_PATH=$(dirname "${BASH_SOURCE[0]}")
-cd "${WORK_DIR:-$SCRIPT_PATH}"
+. $SCRIPT_PATH/common.sh
+. $SCRIPT_PATH/release.cfg
 
-if [[ ! -d "vault" ]]; then
-  echo "Cloning vault"
-  git clone git@github.com:yandex-cloud/vault.git
-  cd vault
-  git remote add upstream git@github.com:hashicorp/vault.git
-#git push origin main
-else
-  echo "Vault already cloned"
-  cd vault
-fi
+init
+init_vault
+cd vault
 
-git reset --hard
-
-echo "Synchronizing with upstream"
-git checkout main
-git pull upstream main
 #git push origin main
 
 echo "Fetching tags"
@@ -53,6 +35,8 @@ while read -r line < <(git log $BASE_VERSION..$YCKMS_VERSION --oneline --reverse
 done
 
 if [[ "$HAS_YCKMS_PATCH" != true ]]; then
+  get_kms_wrapper_version
+
   echo "Applying patch from yckms branch"
   git cherry-pick --no-commit $(git log main..yckms -1000 --oneline --reverse --pretty=format:"%h" | paste -sd' ' -)
   # cherry-pick is more stable then merge-base
@@ -65,8 +49,7 @@ if [[ "$HAS_YCKMS_PATCH" != true ]]; then
   git add yandex/docker/Dockerfile yandex/compute/install.sh
 
   echo "Adding github.com/yandex-cloud/vault-kms-wrapper/v2 dependency"
-  KMS_WRAPPER_VERSION=$(go list -m github.com/hashicorp/go-kms-wrapping/v2 | cut -f 2 -d " ")
-  YCKMS_WRAPPER_VERSION="$KMS_WRAPPER_VERSION-yckms"
+  YCKMS_WRAPPER_VERSION="$KMS_WRAPPER_VERSION-$WRAPPER_SUFFIX"
   YCKMS_WRAPPER=github.com/yandex-cloud/vault-kms-wrapper/v2@"$YCKMS_WRAPPER_VERSION"
 
   if ! go list -m "$YCKMS_WRAPPER"; then
@@ -88,7 +71,3 @@ else
 fi
 
 #git push origin $YCKMS_VERSION
-
-echo "Building vault"
-make bootstrap
-make dev
