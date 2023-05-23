@@ -60,8 +60,8 @@ fi
 
 git tag $TAG -f
 
-#git push origin $BRANCH
-#git push origin $TAG
+git push origin $BRANCH
+git push origin $TAG
 
 git checkout main
-#git push origin main
+git push origin main

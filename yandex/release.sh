@@ -11,7 +11,7 @@ get_kms_wrapper_version
 
 cd vault
 
-#git push origin main
+git push origin main
 
 echo "Fetching tags"
 git fetch upstream --tags
@@ -19,7 +19,7 @@ git fetch upstream --tags
 echo "Updating yckms"
 git checkout yckms
 git rebase origin main
-#git push origin yckms
+git push origin yckms
 
 if git checkout $YCKMS_VERSION; then
   echo "Branch '$YCKMS_VERSION' already exists"
@@ -70,4 +70,4 @@ else
   echo "Patch is already applied"
 fi
 
-#git push origin $YCKMS_VERSION
+git push -f origin $YCKMS_VERSION
