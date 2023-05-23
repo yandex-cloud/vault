@@ -13,9 +13,9 @@ SCRIPT_PATH=$(dirname "${BASH_SOURCE[0]}")
 cd "${WORK_DIR:-$SCRIPT_PATH}"
 cd vault
 
-#echo "Building vault"
-#make bootstrap
-#make dev
+echo "Building vault"
+make bootstrap
+make dev
 
 cat >vault.hcl <<EOF
 # See https://www.vaultproject.io/docs/configuration for more details about configuration options
