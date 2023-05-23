@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 # TODO remove configuration from here
 KMS_KEY=c42rf64v82v478nnn1vt
 ENDPOINT=api.il.nebius.cloud:443
