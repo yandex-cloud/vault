@@ -11,7 +11,7 @@
       "disk_type": "network-hdd",
       "disk_size_gb": 25,
       "use_ipv4_nat": true,
-      "source_image_family": "ubuntu-1804-lts",
+      "source_image_family": "ubuntu-2204-lts",
       "ssh_username": "ubuntu",
       "image_name": "vault-{{timestamp}}",
       "image_family": "vault",
