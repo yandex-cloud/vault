@@ -4,8 +4,8 @@ set -eux
 BASE_VAULT_VERSION=1.11.5
 
 # Install Go
-wget https://golang.org/dl/go1.20.3.linux-amd64.tar.gz # https://go.dev/doc/install
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.3.linux-amd64.tar.gz # https://go.dev/doc/install
+wget https://golang.org/dl/go1.20.5.linux-amd64.tar.gz # https://go.dev/doc/install
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz # https://go.dev/doc/install
 export GOPATH=~/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
