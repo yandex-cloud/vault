@@ -1,7 +1,7 @@
-ARG BASE_VAULT_VERSION=1.11.5
+ARG BASE_VAULT_VERSION=1.14.1
 
 # Clone sources from https://github.com/yandex-cloud/vault.git and build vault binary with support for Yandex KMS
-FROM --platform=linux/amd64 golang:1.20.3
+FROM --platform=linux/amd64 golang:1.20.5
 ARG BASE_VAULT_VERSION
 RUN set -eux \
   && cd / \
@@ -17,5 +17,5 @@ RUN set -eux \
   && make bootstrap static-dist dev-ui
 
 # Replace vault binary in official vault image with the binary built on the previous stage
-FROM vault:${BASE_VAULT_VERSION}
+FROM hashicorp/vault:${BASE_VAULT_VERSION}
 COPY --from=0 /vault/bin/vault /bin/vault
