@@ -132,3 +132,4 @@ website/components/node_modules
 *.log
 
 tools/godoctests/.bin
+/yandex/release.cfg
