@@ -3,10 +3,10 @@ package configutil
 import (
 	"context"
 	"fmt"
-	"github.com/yandex-cloud/go-genproto/yandex/cloud/kms/v1"
 	"os"
 	"sync/atomic"
 
+	"github.com/yandex-cloud/go-genproto/yandex/cloud/kms/v1"
 	"github.com/yandex-cloud/go-sdk/iamkey"
 
 	wrapping "github.com/hashicorp/go-kms-wrapping/v2"
