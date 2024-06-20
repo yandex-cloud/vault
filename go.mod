@@ -234,6 +234,8 @@ require (
 
 require (
 	cloud.google.com/go/longrunning v0.5.7 // indirect
+	github.com/yandex-cloud/go-genproto v0.0.0-20240529120826-df2b24336f42 // indirect
+	github.com/yandex-cloud/go-sdk v0.0.0-20240529122015-8b0dc5b8bcbf // indirect
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028 // indirect
 	gopkg.in/go-jose/go-jose.v2 v2.6.3 // indirect
 )
