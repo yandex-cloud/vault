@@ -1,0 +1,17 @@
+Subject: [PATCH] Changes buy Andrey's setup instructions
+---
+Index: version/version_base.go
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/version/version_base.go b/version/version_base.go
+--- a/version/version_base.go	(revision 67c16342d86aec77d7662e67d2950eae077ca9e7)
++++ b/version/version_base.go	(date 1718897468456)
+@@ -24,5 +24,5 @@
+ 	//go:embed VERSION
+ 	fullVersion                   string
+ 	Version, VersionPrerelease, _ = strings.Cut(strings.TrimSpace(fullVersion), "-")
+-	VersionMetadata               = ""
++	VersionMetadata               = "yckms"
+ )
