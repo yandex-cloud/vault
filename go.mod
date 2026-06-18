@@ -252,6 +252,8 @@ require (
 	github.com/moby/go-archive v0.1.0 // indirect
 	github.com/oracle/oci-go-sdk/v65 v65.101.1 // indirect
 	github.com/wadey/gocovmerge v0.0.0-20160331181800-b5bfa59ec0ad // indirect
+	github.com/yandex-cloud/go-genproto v0.46.0 // indirect
+	github.com/yandex-cloud/go-sdk v0.31.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.2 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/telemetry v0.0.0-20251111182119-bc8e575c7b54 // indirect
