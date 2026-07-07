@@ -250,6 +250,11 @@ require (
 require github.com/aws/aws-sdk-go-v2/service/iam v1.53.6
 
 require (
+	github.com/yandex-cloud/go-genproto v0.93.0 // indirect
+	github.com/yandex-cloud/go-sdk v0.32.0 // indirect
+)
+
+require (
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	// We're currently pulling v0.23.0 + a 32 bit fix: https://github.com/apache/thrift/commit/d2acd3c49e5832cb0179f72b111c4ad5bd89c4c5
 	// until a new version is release.
