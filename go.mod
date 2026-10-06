@@ -310,6 +310,8 @@ require (
 	github.com/oracle/oci-go-sdk/v65 v65.123.0 // indirect
 	github.com/std-uritemplate/std-uritemplate/go/v2 v2.0.3 // indirect
 	github.com/wadey/gocovmerge v0.0.0-20160331181800-b5bfa59ec0ad // indirect
+	github.com/yandex-cloud/go-genproto v0.126.0 // indirect
+	github.com/yandex-cloud/go-sdk v0.40.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/telemetry v0.0.0-20260811182544-a038080d80e5 // indirect
