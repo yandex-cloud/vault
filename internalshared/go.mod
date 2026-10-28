@@ -66,6 +66,8 @@ require (
 	github.com/prometheus/client_golang v1.24.1
 	github.com/prometheus/common v0.70.1
 	github.com/stretchr/testify v1.12.1
+	github.com/yandex-cloud/go-genproto v0.131.0
+	github.com/yandex-cloud/go-sdk v0.41.0
 	go.etcd.io/bbolt v1.5.0
 	go.uber.org/atomic v1.12.0
 	golang.org/x/crypto v0.57.0
@@ -135,6 +137,7 @@ require (
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/felixge/httpsnoop v1.1.0 // indirect
 	github.com/gammazero/deque v1.2.1 // indirect
+	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.5 // indirect
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
@@ -216,6 +219,7 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20260819154853-08b0e4226688 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260921155816-b14227669459 // indirect; indirect\
 	gopkg.in/ini.v1 v1.67.1 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
 replace github.com/hashicorp/vault/version => ../version

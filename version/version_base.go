@@ -24,5 +24,5 @@ var (
 	//go:embed VERSION
 	fullVersion                   string
 	Version, VersionPrerelease, _ = strings.Cut(strings.TrimSpace(fullVersion), "-")
-	VersionMetadata               = ""
+	VersionMetadata               = "yckms"
 )
